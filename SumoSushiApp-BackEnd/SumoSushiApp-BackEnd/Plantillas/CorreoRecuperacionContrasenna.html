@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Recuperación de contraseña</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f7f7f7; padding: 20px; margin: 0;">
+    <div style="background-color: #ffffff; padding: 20px; border-radius: 8px; max-width: 500px; margin: auto; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+        <h2 style="margin-top: 0;">Recuperación de contraseña</h2>
+        <p>Recibimos una solicitud para restablecer tu contraseña en <strong>Sumo Sushi</strong>.</p>
+        <p>Este es tu código de recuperación:</p>
+        <p style="font-size: 24px; font-weight: bold; color: #e60012; margin: 20px 0;">
+            {{TOKEN}}
+        </p>
+        <p>Este código es válido hasta: 
+            <strong>{{EXPIRA}}</strong>
+        </p>
+        <p>Si no solicitaste este código, puedes ignorar este mensaje.</p>
+    </div>
+</body>
+</html>

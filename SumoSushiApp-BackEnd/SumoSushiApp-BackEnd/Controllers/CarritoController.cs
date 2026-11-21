@@ -18,20 +18,16 @@ namespace SumoSushiApp_BackEnd.Controllers
         }
 
         [Authorize]
-        [Authorize]
         [HttpPost("Agregar")]
         public async Task<IActionResult> AgregarProducto([FromBody] CarritoAgregarDTO dto)
         {
             dto.IdUsuario = ControllerUtils.ObtenerUsuarioId(HttpContext);
-
-            // Null sea = 0
 
             if (dto.IdPresentacionProducto == 0)
                 dto.IdPresentacionProducto = null;
             if (dto.IdPromocion == 0)
                 dto.IdPromocion = null;
 
-            // Validación para que venga solo un dato, solo uno debe venir
             bool tienePresentacion = dto.IdPresentacionProducto.HasValue;
             bool tienePromocion = dto.IdPromocion.HasValue;
 
@@ -50,18 +46,6 @@ namespace SumoSushiApp_BackEnd.Controllers
             return Ok(respuesta);
         }
 
-        //Se elimina mediante el id del usuario.
-
-        //[Authorize]
-        //[HttpDelete("Eliminar")]
-        //public async Task<IActionResult> EliminarProducto([FromBody] CarritoEliminarDTO dto)
-        //{
-        //    dto.IdUsuario = ControllerUtils.ObtenerUsuarioId(HttpContext);
-        //    var respuesta = await _service.EliminarProducto(dto);
-        //    return Ok(respuesta);
-        //}
-
-
         [Authorize]
         [HttpGet("Obtener")]
         public async Task<IActionResult> ObtenerCarrito()
@@ -70,28 +54,6 @@ namespace SumoSushiApp_BackEnd.Controllers
             var respuesta = await _service.ObtenerCarrito(idUsuario);
             return Ok(respuesta);
         }
-
-        // Se obtiene solo el dato de los idpromociones
-        //[Authorize]
-        //[HttpGet("ObtenerPromociones")]
-        //public async Task<IActionResult> ObtenerCarritoPromociones()
-        //{
-        //    var idUsuario = ControllerUtils.ObtenerUsuarioId(HttpContext);
-        //    var respuesta = await _service.ObtenerCarritoPromociones(idUsuario);
-        //    return Ok(respuesta);
-        //}
-
-        //// Se obtiene solo el dato de los idpresentaciones
-
-        //[Authorize]
-        //[HttpGet("ObtenerPresentaciones")]
-        //public async Task<IActionResult> ObtenerCarritoPresentaciones()
-        //{
-        //    var idUsuario = ControllerUtils.ObtenerUsuarioId(HttpContext);
-        //    var respuesta = await _service.ObtenerCarritoPresentaciones(idUsuario);
-        //    return Ok(respuesta);
-        //}
-
     }
 }
 
